@@ -1,0 +1,6 @@
+C:\Projects\BillOfLading\LadingSystem\obj\docker-publish-check\appsettings.Development.json
+C:\Projects\BillOfLading\LadingSystem\obj\docker-publish-check\appsettings.json
+C:\Projects\BillOfLading\LadingSystem\obj\docker-publish-check\LadingSystem.dll
+C:\Projects\BillOfLading\LadingSystem\obj\docker-publish-check\LadingSystem.deps.json
+C:\Projects\BillOfLading\LadingSystem\obj\docker-publish-check\LadingSystem.runtimeconfig.json
+C:\Projects\BillOfLading\LadingSystem\obj\docker-publish-check\LadingSystem.pdb

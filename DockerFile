@@ -1,0 +1,33 @@
+# Build from the repository root, using -f LadingSystem/DockerFile.
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS development
+WORKDIR /src/LadingSystem
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_HTTP_PORTS=8080
+
+# Docker Desktop bind mounts need polling to reliably detect host edits.
+ENV DOTNET_USE_POLLING_FILE_WATCHER=1
+EXPOSE 8080
+COPY LadingSystem/ .
+ENTRYPOINT ["dotnet", "watch", "--non-interactive", "run", "--no-launch-profile"]
+
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+# Cache package restore independently of source changes.
+COPY ["LadingSystem/LadingSystem.csproj", "LadingSystem/"]
+RUN dotnet restore "LadingSystem/LadingSystem.csproj"
+
+COPY LadingSystem/ LadingSystem/
+RUN dotnet publish "LadingSystem/LadingSystem.csproj" \
+    -c Release -o /app/publish --no-restore /p:UseAppHost=false
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+WORKDIR /app
+ENV ASPNETCORE_HTTP_PORTS=8080
+ENV ASPNETCORE_ENVIRONMENT=Production
+EXPOSE 8080
+
+COPY --from=build /app/publish .
+USER $APP_UID
+ENTRYPOINT ["dotnet", "LadingSystem.dll"]
+        

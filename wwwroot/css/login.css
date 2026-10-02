@@ -1,0 +1,58 @@
+:root { color-scheme: light; font-family: "Segoe UI", Arial, sans-serif; color: #19333b; background: #fafbf9; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input { font: inherit; }
+a { color: inherit; }
+.login-page { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; }
+.brand-panel { background: #103d47; color: #fff; padding: 52px 11%; position: relative; overflow: hidden; display: flex; flex-direction: column; min-height: 740px; }
+.brand { display: inline-flex; align-items: center; gap: 13px; text-decoration: none; align-self: flex-start; font-size: 29px; font-weight: 650; letter-spacing: -.8px; }
+.brand-mark { width: 46px; height: 46px; color: #a5ded3; }
+.brand small { display: block; font-size: 10px; letter-spacing: 3.7px; font-weight: 500; margin-top: 2px; }
+.brand-copy { margin: auto 0; padding: 90px 0 230px; position: relative; z-index: 1; }
+.eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: #a5ded3; display: flex; align-items: center; gap: 10px; }
+.eyebrow span { width: 20px; height: 1px; background: currentColor; }
+h1 { font-size: clamp(38px, 4vw, 62px); font-weight: 500; line-height: 1.12; letter-spacing: -2px; margin: 25px 0; }
+.brand-copy > p:last-child { color: #bdd0d3; font-size: 16px; line-height: 1.8; max-width: 355px; }
+.ocean-art { position: absolute; width: 100%; left: 0; bottom: 64px; }
+.brand-footer { margin: 0; font-size: 9px; letter-spacing: 2.4px; color: #a5c2c6; z-index: 1; }
+.form-panel { display: flex; flex-direction: column; padding: 60px 12% 28px; }
+.login-card { width: 100%; max-width: 400px; margin: auto; padding: 50px 0; }
+.portal-label { font-size: 10px; letter-spacing: 2px; font-weight: 700; color: #527778; margin: 0 0 24px; }
+h2 { font-size: clamp(30px, 3vw, 40px); font-weight: 600; letter-spacing: -1.4px; margin: 0 0 12px; }
+.form-intro { color: #718084; font-size: 14px; margin: 0 0 36px; line-height: 1.6; }
+.field { margin-bottom: 23px; }
+.field label { display: block; margin-bottom: 9px; font-size: 13px; font-weight: 600; }
+.field input { width: 100%; height: 51px; border: 1px solid #d7dfdf; background: #fff; border-radius: 7px; padding: 0 15px; color: #19333b; font-size: 14px; }
+.field input::placeholder { color: #899598; }
+.password-field { position: relative; }
+.password-field input { padding-right: 70px; }
+.password-toggle { position: absolute; right: 10px; top: 8px; height: 35px; padding: 0 8px; border: 0; border-radius: 4px; background: transparent; color: #456b70; font-size: 12px; cursor: pointer; }
+.remember { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #607176; cursor: pointer; margin-bottom: 26px; }
+.remember input { width: 16px; height: 16px; margin: 0; accent-color: #17685f; }
+.sign-in { display: flex; justify-content: center; align-items: center; gap: 14px; width: 100%; height: 51px; border: 0; border-radius: 7px; background: #17685f; color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s; }
+.sign-in:hover { background: #10534c; }
+.sign-in:disabled { opacity: .6; cursor: not-allowed; }
+.sign-in span { font-size: 21px; font-weight: 400; }
+:focus-visible { outline: 3px solid #64b8aa; outline-offset: 3px; }
+.login-status { padding: 12px; border-radius: 6px; background: #e7f1ed; color: #275950; font-size: 13px; line-height: 1.6; }
+.support { border-top: 1px solid #e2e7e4; padding-top: 25px; margin: 32px 0 0; font-size: 12px; line-height: 1.9; color: #7a8789; text-align: center; }
+.support span { color: #496769; }
+.support a { color: #17685f; font-weight: 600; text-underline-offset: 3px; }
+.field-hint { margin: 8px 0 0; color: #607176; font-size: 12px; line-height: 1.5; }
+.signup-page .login-card { max-width: 440px; padding: 30px 0; }
+.signup-page .form-panel { padding-top: 28px; }
+.signup-page .form-intro { margin-bottom: 26px; }
+footer { text-align: center; color: #84908f; font-size: 10px; line-height: 1.8; }
+footer span { display: block; }
+@media (min-width: 1500px) { .brand-panel { padding-left: 15%; } }
+@media (max-width: 850px) { .brand-panel { padding: 38px 9%; } .form-panel { padding: 40px 9% 25px; } h1 { font-size: 40px; } }
+@media (max-width: 640px) {
+    .login-page { grid-template-columns: 1fr; }
+    .brand-panel { min-height: auto; padding: 26px 8% 30px; }
+    .brand { font-size: 24px; } .brand-mark { width: 39px; height: 39px; }
+    .brand-copy { padding: 25px 0 0; } .eyebrow, .brand-footer, .ocean-art { display: none; }
+    h1 { font-size: 34px; letter-spacing: -1px; margin: 0 0 12px; } h1 br { display: none; }
+    .brand-copy > p:last-child { margin: 0; font-size: 13px; max-width: 100%; }
+    .form-panel { padding: 0 8% 22px; } .login-card { padding: 36px 0; }
+    .portal-label { margin-bottom: 16px; } .form-intro { margin-bottom: 26px; }
+}

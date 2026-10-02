@@ -1,0 +1,84 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Sign in | SeaRoute Shipping Inc.";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="login-page">
+        <section class="brand-panel" aria-labelledby="brand-heading">
+            <a class="brand" href="@Url.Action("Index", "Home")" aria-label="SeaRoute Shipping Inc. home">
+                <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 5v23M15 12h18M8 27l16 8 16-8-5 12H13L8 27Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M5 43c6-5 12 5 19 0s13 5 19 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>SeaRoute<small>SHIPPING INC.</small></span>
+            </a>
+            <div class="brand-copy">
+                <p class="eyebrow"><span></span> YOUR CONNECTION TO THE SEA</p>
+                <h1 id="brand-heading">Every shipment.<br />A clear course.</h1>
+                <p>One place to manage your bills of lading and keep your shipping operations moving forward.</p>
+            </div>
+            <svg class="ocean-art" viewBox="0 0 700 300" fill="none" aria-hidden="true">
+                <circle cx="520" cy="83" r="49" fill="#9ddbd4" fill-opacity=".12" />
+                <path d="M0 211C130 140 213 276 360 208S583 151 700 207M0 247C130 176 213 312 360 244S583 187 700 243M0 283C130 212 213 348 360 280S583 223 700 279" stroke="#8accc7" stroke-opacity=".25" />
+                <path d="M176 161h330l-38 43H219l-43-43Z" fill="#80c5bf" fill-opacity=".18" stroke="#9ddbd4" stroke-opacity=".55" />
+                <path d="M218 160v-38h59v38m8 0v-38h59v38m8 0v-38h59v38m-151-39V89h60v32m8 0V89h60v32m43 39V99h45v61m-34-61V78h22v21" stroke="#9ddbd4" stroke-opacity=".5" />
+                <path d="M68 107c91-99 234-90 319-51" stroke="#9ddbd4" stroke-opacity=".35" stroke-dasharray="5 8" /><circle cx="68" cy="107" r="4" fill="#9ddbd4" />
+            </svg>
+            <p class="brand-footer">BUILT FOR THE JOURNEY AHEAD</p>
+        </section>
+
+        <section class="form-panel" aria-labelledby="login-heading">
+            <div class="login-card">
+                <p class="portal-label">SEAROUTE OPERATIONS PORTAL</p>
+                <h2 id="login-heading">Welcome aboard.</h2>
+                <p class="form-intro">Sign in to your account to get started.</p>
+                <form id="login-form" method="post" action="@Url.Action("Index", "Home")">
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input id="email" name="email" type="email" autocomplete="username" placeholder="you@company.com" required />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+                            <button class="password-toggle" id="toggle-password" type="button" aria-controls="password" aria-pressed="false" aria-label="Show password" hidden>Show</button>
+                        </div>
+                    </div>
+                    <label class="remember"><input name="rememberMe" type="checkbox" value="true" /> Remember me</label>
+                    <button class="sign-in" id="sign-in" type="submit" disabled>Sign in <span aria-hidden="true">&rarr;</span></button>
+                    <p id="login-status" class="login-status" role="status" hidden></p>
+                    <noscript><p class="login-status">Sign-in is not available yet. Please contact your administrator.</p></noscript>
+                </form>
+                <p class="support">New to SeaRoute? <a href="@Url.Action("Index", "SignUp")">Create an account</a><br /><span>For help signing in, contact your SeaRoute administrator.</span></p>
+            </div>
+            <footer>&copy; @DateTime.Now.Year SeaRoute Shipping Inc.<span>All rights reserved.</span></footer>
+        </section>
+    </main>
+    <script>
+        const password = document.getElementById('password');
+        const toggle = document.getElementById('toggle-password');
+        toggle.hidden = false;
+        toggle.addEventListener('click', () => {
+            const show = password.type === 'password';
+            password.type = show ? 'text' : 'password';
+            toggle.textContent = show ? 'Hide' : 'Show';
+            toggle.setAttribute('aria-pressed', String(show));
+            toggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        });
+        // Replace this preview handler when an authentication endpoint is configured.
+        document.getElementById('login-form').addEventListener('submit', event => {
+            event.preventDefault();
+            const status = document.getElementById('login-status');
+            status.textContent = 'Sign-in is not connected yet. Please contact your SeaRoute administrator.';
+            status.hidden = false;
+        });
+        document.getElementById('sign-in').disabled = false;
+    </script>
+</body>
+</html>

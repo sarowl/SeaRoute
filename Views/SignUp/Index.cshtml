@@ -1,0 +1,112 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "Create account | SeaRoute Shipping Inc.";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="login-page signup-page">
+        <section class="brand-panel" aria-labelledby="brand-heading">
+            <a class="brand" href="@Url.Action("Index", "Home")" aria-label="SeaRoute Shipping Inc. home">
+                <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 5v23M15 12h18M8 27l16 8 16-8-5 12H13L8 27Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M5 43c6-5 12 5 19 0s13 5 19 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+                <span>SeaRoute<small>SHIPPING INC.</small></span>
+            </a>
+            <div class="brand-copy">
+                <p class="eyebrow"><span></span> YOUR CONNECTION TO THE SEA</p>
+                <h1 id="brand-heading">Your next journey<br />starts here.</h1>
+                <p>Join the SeaRoute operations portal to manage your bills of lading and keep your shipments moving.</p>
+            </div>
+            <svg class="ocean-art" viewBox="0 0 700 300" fill="none" aria-hidden="true">
+                <circle cx="520" cy="83" r="49" fill="#9ddbd4" fill-opacity=".12" />
+                <path d="M0 211C130 140 213 276 360 208S583 151 700 207M0 247C130 176 213 312 360 244S583 187 700 243M0 283C130 212 213 348 360 280S583 223 700 279" stroke="#8accc7" stroke-opacity=".25" />
+                <path d="M176 161h330l-38 43H219l-43-43Z" fill="#80c5bf" fill-opacity=".18" stroke="#9ddbd4" stroke-opacity=".55" />
+                <path d="M218 160v-38h59v38m8 0v-38h59v38m8 0v-38h59v38m-151-39V89h60v32m8 0V89h60v32m43 39V99h45v61m-34-61V78h22v21" stroke="#9ddbd4" stroke-opacity=".5" />
+            </svg>
+            <p class="brand-footer">BUILT FOR THE JOURNEY AHEAD</p>
+        </section>
+        <section class="form-panel" aria-labelledby="signup-heading">
+            <div class="login-card">
+                <p class="portal-label">SEAROUTE OPERATIONS PORTAL</p>
+                <h2 id="signup-heading">Create your account.</h2>
+                <p class="form-intro">Enter your details to get started with SeaRoute.</p>
+                <form id="signup-form" method="post" action="@Url.Action("Index", "SignUp")">
+                    <div class="field">
+                        <label for="full-name">Full name</label>
+                        <input id="full-name" name="fullName" type="text" autocomplete="name" placeholder="Enter your full name" maxlength="150" required />
+                    </div>
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input id="email" name="email" type="email" autocomplete="username" placeholder="you@company.com" required />
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Create a password" minlength="8" aria-describedby="password-hint" required />
+                            <button class="password-toggle" type="button" aria-controls="password" aria-pressed="false" aria-label="Show password" hidden>Show</button>
+                        </div>
+                        <p class="field-hint" id="password-hint">Use at least 8 characters.</p>
+                    </div>
+                    <div class="field">
+                        <label for="confirm-password">Confirm password</label>
+                        <div class="password-field">
+                            <input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Re-enter your password" minlength="8" required />
+                            <button class="password-toggle" type="button" aria-controls="confirm-password" aria-pressed="false" aria-label="Show confirmation password" hidden>Show</button>
+                        </div>
+                    </div>
+                    <button class="sign-in" id="create-account" type="submit" disabled>Create account <span aria-hidden="true">&rarr;</span></button>
+                    <p id="signup-status" class="login-status" role="status" hidden></p>
+                    <noscript><p class="login-status">Registration is not available yet. Please contact your SeaRoute administrator.</p></noscript>
+                </form>
+                <p class="support">Already have an account? <a href="@Url.Action("Index", "Home")">Sign in</a></p>
+            </div>
+            <footer>&copy; @DateTime.Now.Year SeaRoute Shipping Inc.<span>All rights reserved.</span></footer>
+        </section>
+    </main>
+    <script>
+        const form = document.getElementById('signup-form');
+        const password = document.getElementById('password');
+        const confirmation = document.getElementById('confirm-password');
+        const fullName = document.getElementById('full-name');
+        const status = document.getElementById('signup-status');
+
+        document.querySelectorAll('.password-toggle').forEach(toggle => {
+            const input = document.getElementById(toggle.getAttribute('aria-controls'));
+            const label = input === password ? 'password' : 'confirmation password';
+            toggle.hidden = false;
+            toggle.addEventListener('click', () => {
+                const show = input.type === 'password';
+                input.type = show ? 'text' : 'password';
+                toggle.textContent = show ? 'Hide' : 'Show';
+                toggle.setAttribute('aria-pressed', String(show));
+                toggle.setAttribute('aria-label', `${show ? 'Hide' : 'Show'} ${label}`);
+            });
+        });
+
+        function validateDetails() {
+            fullName.setCustomValidity(fullName.value.trim() ? '' : 'Please enter your full name.');
+            confirmation.setCustomValidity(confirmation.value && confirmation.value !== password.value
+                ? 'Passwords do not match.' : '');
+        }
+        form.addEventListener('input', () => {
+            validateDetails();
+            status.hidden = true;
+        });
+        // Replace this preview handler when account registration is configured.
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            validateDetails();
+            if (!form.reportValidity()) return;
+            status.textContent = 'Registration is not connected yet. No account has been created. Please contact your SeaRoute administrator.';
+            status.hidden = false;
+        });
+        document.getElementById('create-account').disabled = false;
+    </script>
+</body>
+</html>
