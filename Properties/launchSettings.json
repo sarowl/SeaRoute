@@ -1,23 +1,25 @@
-﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
-  "profiles": {
-    "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5007",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7096;http://localhost:5007",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    }
-  }
+{
+    "$schema":  "https://json.schemastore.org/launchsettings.json",
+    "profiles":  {
+                     "http":  {
+                                  "commandName":  "Project",
+                                  "dotnetRunMessages":  true,
+                                  "launchBrowser":  true,
+                                  "applicationUrl":  "http://localhost:5007",
+                                  "environmentVariables":  {
+                                                               "ASPNETCORE_ENVIRONMENT":  "Development",
+                                                               "GOOGLE_APPLICATION_CREDENTIALS":  "C:\\Users\\Victus15\\Documents\\searoute-d3c1b-firebase-adminsdk-fbsvc-64b06a8343.json"
+                                                           }
+                              },
+                     "https":  {
+                                   "commandName":  "Project",
+                                   "dotnetRunMessages":  true,
+                                   "launchBrowser":  true,
+                                   "applicationUrl":  "https://localhost:7096;http://localhost:5007",
+                                   "environmentVariables":  {
+                                                                "ASPNETCORE_ENVIRONMENT":  "Development",
+                                                                "GOOGLE_APPLICATION_CREDENTIALS":  "C:\\Users\\Victus15\\Documents\\searoute-d3c1b-firebase-adminsdk-fbsvc-64b06a8343.json"
+                                                            }
+                               }
+                 }
 }

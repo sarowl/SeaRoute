@@ -1,0 +1,19 @@
+@model LadingSystem.Models.User
+@{
+    ViewData["Title"] = "SeaRoute operations portal";
+}
+<h1>Welcome aboard, <span id="profile-name">@Model.FullName</span>.</h1>
+<p>You're signed in to SeaRoute's operations portal.</p>
+<dl id="profile-details">
+    <dt>Email address</dt>
+    <dd id="profile-email">@Model.Email</dd>
+    <dt>Account created</dt>
+    <dd id="profile-created">@Model.CreatedAt.ToString("d")</dd>
+</dl>
+<form id="logout-form" asp-controller="Auth" asp-action="Logout" method="post">
+    <button class="btn btn-outline-primary" type="submit">Sign out</button>
+</form>
+@section Scripts {
+    <partial name="_FirebaseConfig" />
+    <script type="module" src="~/js/firebase-auth.js" asp-append-version="true"></script>
+}

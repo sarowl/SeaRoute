@@ -56,3 +56,10 @@ footer span { display: block; }
     .form-panel { padding: 0 8% 22px; } .login-card { padding: 36px 0; }
     .portal-label { margin-bottom: 16px; } .form-intro { margin-bottom: 26px; }
 }
+.google-sign-in { width: 100%; min-height: 51px; display: flex; align-items: center; justify-content: center; gap: 12px; border: 1px solid #cbd7d5; border-radius: 7px; background: white; color: #19333b; font-weight: 600; cursor: pointer; }
+.google-sign-in:hover { background: #f0f6f4; border-color: #527778; }
+.google-sign-in:disabled { opacity: .6; cursor: not-allowed; }
+.google-mark { display: block; width: 20px; height: 20px; flex-shrink: 0; }
+.google-hint { text-align: center; font-size: 12px; color: #607176; line-height: 1.5; margin: 12px 0 22px; }
+.auth-divider { display: flex; align-items: center; gap: 14px; margin: 24px 0; color: #718084; font-size: 12px; }
+.auth-divider::before, .auth-divider::after { content: ''; height: 1px; flex: 1; background: #dfe7e4; }

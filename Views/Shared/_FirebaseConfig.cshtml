@@ -1,0 +1,15 @@
+@using LadingSystem.Models
+@using Microsoft.Extensions.Options
+@using System.Text.Json
+@inject IOptions<FirebaseOptions> FirebaseSettings
+@{
+    var settings = FirebaseSettings.Value;
+}
+<script id="firebase-config" type="application/json">@Html.Raw(JsonSerializer.Serialize(new {
+    apiKey = settings.ApiKey,
+    authDomain = settings.AuthDomain,
+    projectId = settings.ProjectId,
+    appId = settings.AppId,
+    messagingSenderId = settings.MessagingSenderId,
+    storageBucket = settings.StorageBucket
+}))</script>

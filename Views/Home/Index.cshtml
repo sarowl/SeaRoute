@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = null;
     ViewData["Title"] = "Sign in | SeaRoute Shipping Inc.";
 }
@@ -52,33 +52,18 @@
                     </div>
                     <label class="remember"><input name="rememberMe" type="checkbox" value="true" /> Remember me</label>
                     <button class="sign-in" id="sign-in" type="submit" disabled>Sign in <span aria-hidden="true">&rarr;</span></button>
+                    <div class="auth-divider"><span>or continue with Google</span></div>
+                    <button class="google-sign-in" id="google-sign-in" type="button" aria-describedby="google-hint" disabled><img class="google-mark" src="~/images/google-mark.svg" alt="" width="20" height="20" /> Sign in with Google</button>
+                    <p class="google-hint" id="google-hint">Sign in using your Gmail or Google account.</p>
                     <p id="login-status" class="login-status" role="status" hidden></p>
-                    <noscript><p class="login-status">Sign-in is not available yet. Please contact your administrator.</p></noscript>
+                    <noscript><p class="login-status">Enable JavaScript to sign in.</p></noscript>
                 </form>
                 <p class="support">New to SeaRoute? <a href="@Url.Action("Index", "SignUp")">Create an account</a><br /><span>For help signing in, contact your SeaRoute administrator.</span></p>
             </div>
             <footer>&copy; @DateTime.Now.Year SeaRoute Shipping Inc.<span>All rights reserved.</span></footer>
         </section>
     </main>
-    <script>
-        const password = document.getElementById('password');
-        const toggle = document.getElementById('toggle-password');
-        toggle.hidden = false;
-        toggle.addEventListener('click', () => {
-            const show = password.type === 'password';
-            password.type = show ? 'text' : 'password';
-            toggle.textContent = show ? 'Hide' : 'Show';
-            toggle.setAttribute('aria-pressed', String(show));
-            toggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
-        });
-        // Replace this preview handler when an authentication endpoint is configured.
-        document.getElementById('login-form').addEventListener('submit', event => {
-            event.preventDefault();
-            const status = document.getElementById('login-status');
-            status.textContent = 'Sign-in is not connected yet. Please contact your SeaRoute administrator.';
-            status.hidden = false;
-        });
-        document.getElementById('sign-in').disabled = false;
-    </script>
+    <partial name="_FirebaseConfig" />
+    <script type="module" src="~/js/firebase-auth.js" asp-append-version="true"></script>
 </body>
 </html>

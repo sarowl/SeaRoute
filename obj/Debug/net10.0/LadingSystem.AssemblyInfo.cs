@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LadingSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a740f7505ed6478b8a61b4e742d4bda2a017c6db")]
 [assembly: System.Reflection.AssemblyProductAttribute("LadingSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LadingSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,15 @@
+{
+    "auth":  {
+                 "providers":  {
+                                   "emailPassword":  true,
+                                   "googleSignIn":  {
+                                                        "oAuthBrandDisplayName":  "SeaRoute Shipping Inc.",
+                                                        "supportEmail":  "jhnmichl77@gmail.com",
+                                                        "authorizedRedirectUris":  [
+                                                                                       "https://searoute-d3c1b.firebaseapp.com/__/auth/handler",
+                                                                                       "http://localhost"
+                                                                                   ]
+                                                    }
+                               }
+             }
+}

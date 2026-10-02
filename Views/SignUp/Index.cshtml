@@ -61,52 +61,18 @@
                         </div>
                     </div>
                     <button class="sign-in" id="create-account" type="submit" disabled>Create account <span aria-hidden="true">&rarr;</span></button>
+                    <div class="auth-divider"><span>or continue with Google</span></div>
+                    <button class="google-sign-in" id="google-sign-in" type="button" aria-describedby="google-hint" disabled><img class="google-mark" src="~/images/google-mark.svg" alt="" width="20" height="20" /> Sign up with Google</button>
+                    <p class="google-hint" id="google-hint">Create an account using Gmail. No new password needed.</p>
                     <p id="signup-status" class="login-status" role="status" hidden></p>
-                    <noscript><p class="login-status">Registration is not available yet. Please contact your SeaRoute administrator.</p></noscript>
+                    <noscript><p class="login-status">Enable JavaScript to create your account.</p></noscript>
                 </form>
                 <p class="support">Already have an account? <a href="@Url.Action("Index", "Home")">Sign in</a></p>
             </div>
             <footer>&copy; @DateTime.Now.Year SeaRoute Shipping Inc.<span>All rights reserved.</span></footer>
         </section>
     </main>
-    <script>
-        const form = document.getElementById('signup-form');
-        const password = document.getElementById('password');
-        const confirmation = document.getElementById('confirm-password');
-        const fullName = document.getElementById('full-name');
-        const status = document.getElementById('signup-status');
-
-        document.querySelectorAll('.password-toggle').forEach(toggle => {
-            const input = document.getElementById(toggle.getAttribute('aria-controls'));
-            const label = input === password ? 'password' : 'confirmation password';
-            toggle.hidden = false;
-            toggle.addEventListener('click', () => {
-                const show = input.type === 'password';
-                input.type = show ? 'text' : 'password';
-                toggle.textContent = show ? 'Hide' : 'Show';
-                toggle.setAttribute('aria-pressed', String(show));
-                toggle.setAttribute('aria-label', `${show ? 'Hide' : 'Show'} ${label}`);
-            });
-        });
-
-        function validateDetails() {
-            fullName.setCustomValidity(fullName.value.trim() ? '' : 'Please enter your full name.');
-            confirmation.setCustomValidity(confirmation.value && confirmation.value !== password.value
-                ? 'Passwords do not match.' : '');
-        }
-        form.addEventListener('input', () => {
-            validateDetails();
-            status.hidden = true;
-        });
-        // Replace this preview handler when account registration is configured.
-        form.addEventListener('submit', event => {
-            event.preventDefault();
-            validateDetails();
-            if (!form.reportValidity()) return;
-            status.textContent = 'Registration is not connected yet. No account has been created. Please contact your SeaRoute administrator.';
-            status.hidden = false;
-        });
-        document.getElementById('create-account').disabled = false;
-    </script>
+    <partial name="_FirebaseConfig" />
+    <script type="module" src="~/js/firebase-auth.js" asp-append-version="true"></script>
 </body>
 </html>
